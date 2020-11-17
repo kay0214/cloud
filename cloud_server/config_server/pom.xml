@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>config_server</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>config_server</name>
+    <description>config server for spring cloud</description>
+
+    <parent>
+        <artifactId>cloud_server</artifactId>
+        <groupId>com.personal</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencies>
+        <!-- spring cloud config server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+
+        <!-- spring cloud eureka client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

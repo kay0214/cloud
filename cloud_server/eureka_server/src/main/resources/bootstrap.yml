@@ -1,0 +1,55 @@
+#端口号
+server:
+  port: 1111
+
+#应用名和生效的配置文件
+spring:
+  application:
+    name: '@eureka.server.id@'
+  profiles:
+    active: ${spring.profiles.active}
+
+#eureka配置信息
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    # 一个注册中心时设为false,禁止注册自身;多个注册中心时设置为true
+    register-with-eureka: false
+    # 是否能够获取eureka注册信息
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: '@eureka.serviceUrl.default@'
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+
+#actuator健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#actuator健康监控信息 - 每个属性都是自定义展示的,可以随意添加
+info:
+  name: ${spring.application.name}
+  profiles: ${spring.profiles.active}
+  version: '@project.version@'
+  encoding: '@project.build.sourceEncoding@'
+  java-version: '@java.version@'
+
+#日志输出
+logging:
+  file:
+    # 日志路径,需要修改
+    name: E:\logs\eureka.log
+    max-size: 100MB
+  level:
+    # 每4秒运行一次剔除任务,会频繁的打印日志:Running the evict task with compensationTime 0ms
+    com.netflix.eureka.registry: error

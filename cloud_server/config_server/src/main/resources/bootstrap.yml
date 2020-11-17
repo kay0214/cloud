@@ -1,0 +1,57 @@
+#端口号
+server:
+  port: 2222
+
+#应用名、生效的配置文件、配置中心从git拉取配置文件
+spring:
+  application:
+    name: '@config.server.id@'
+  profiles:
+    active: ${spring.profiles.active}
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sunpeikai/config-deploy
+          username: sunpeikai
+          password: spkzq521
+          default-label: master
+          search-paths: deploy
+
+#将配置中心注册到eureka
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    serviceUrl:
+      defaultZone: '@eureka.serviceUrl.default@'
+
+#actuator健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#actuator健康监控信息 - 每个属性都是自定义展示的,可以随意添加
+info:
+  name: ${spring.application.name}
+  profiles: ${spring.profiles.active}
+  version: '@project.version@'
+  encoding: '@project.build.sourceEncoding@'
+  java-version: '@java.version@'
+
+#日志输出
+logging:
+  file:
+    # 日志路径,需要修改
+    name: E:\logs\config.log
+    max-size: 100MB
+
+
+

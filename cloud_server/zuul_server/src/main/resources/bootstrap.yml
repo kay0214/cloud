@@ -1,0 +1,65 @@
+#端口号
+server:
+  port: 3333
+
+#应用名、生效的配置文件、从配置中心拉取配置文件
+spring:
+  application:
+    name: '@zuul.server.id@'
+  profiles:
+    active: ${spring.profiles.active}
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+    config:
+      discovery:
+        enabled: true
+        service-id: '@config.server.id@'
+      fail-fast: false
+
+#将网关注册到eureka
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    serviceUrl:
+      defaultZone: '@eureka.serviceUrl.default@'
+
+#actuator健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#actuator健康监控信息 - 每个属性都是自定义展示的,可以随意添加
+info:
+  name: ${spring.application.name}
+  profiles: ${spring.profiles.active}
+  version: '@project.version@'
+  encoding: '@project.build.sourceEncoding@'
+  java-version: '@java.version@'
+
+#日志输出
+logging:
+  file:
+    # 日志路径,需要修改
+    name: E:\logs\zuul.log
+    max-size: 100MB
+
+#网关配置
+# zuul:
+  # host:
+  # max-total-connections: 200
+  # max-per-route-connections: 20
+  # socket-timeout-millis: 60000
+  # connect-timeout-millis: 60000
+  # 路由前缀,所有路由都会拼接上这个前缀
+  # prefix: /index
+

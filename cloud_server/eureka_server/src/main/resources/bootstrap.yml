@@ -12,7 +12,7 @@ spring:
 #eureka配置信息
 eureka:
   instance:
-    instance-id: ${spring.application.name}
+    instance-id: ${spring.application.name}:${server.port}
     prefer-ip-address: true
     appname: ${spring.application.name}
   client:

@@ -21,7 +21,7 @@ spring:
 #将test-server注册到eureka
 eureka:
   instance:
-    instance-id: ${spring.application.name}
+    instance-id: ${spring.application.name}:${server.port}
     prefer-ip-address: true
     appname: ${spring.application.name}
   client:

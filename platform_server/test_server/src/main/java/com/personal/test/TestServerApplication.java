@@ -3,6 +3,7 @@
  */
 package com.personal.test;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,12 @@ public class TestServerApplication {
         SpringApplication.run(TestServerApplication.class, args);
     }
 
+    @Value("${server.port}")
+    String port;
+
     @GetMapping("/index")
     public String index(){
-        return "this is test page - index";
+        System.out.println("port:" + port);
+        return "this is test page - index - from port : " + port;
     }
 }

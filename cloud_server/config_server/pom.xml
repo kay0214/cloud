@@ -23,6 +23,12 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
+        <!-- spring cloud bus -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+
         <!-- spring cloud eureka client -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

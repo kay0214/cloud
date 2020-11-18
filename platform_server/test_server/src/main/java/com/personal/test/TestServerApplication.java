@@ -6,6 +6,7 @@ package com.personal.test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version TestServerApplication, v0.1 2020/11/16 16:28
  * @description
  */
+@RefreshScope
 @RestController
 @SpringBootApplication
 public class TestServerApplication {
@@ -23,10 +25,11 @@ public class TestServerApplication {
 
     @Value("${server.port}")
     String port;
+    @Value("${test}")
+    private String test;
 
     @GetMapping("/index")
     public String index(){
-        System.out.println("port:" + port);
-        return "this is test page - index - from port : " + port;
+        return "this is test page - index - from port : " + port + " test : " + test;
     }
 }

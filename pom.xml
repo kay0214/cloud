@@ -31,6 +31,7 @@
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eureka.serviceUrl.default>http://localhost:1111/eureka</eureka.serviceUrl.default>
+        <!-- 各个server的名称 -->
         <eureka.server.id>EUREKA-SERVER</eureka.server.id>
         <config.server.id>CONFIG-SERVER</config.server.id>
         <zuul.server.id>ZUUL-SERVER</zuul.server.id>

@@ -12,11 +12,20 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sunpeikai/config-deploy
-          username: sunpeikai
+          uri: https://gitee.com/sunpeikai/config-deploy
+          username: sunpeikai@yeah.net
           password: spkzq521
           default-label: master
           search-paths: deploy
+    bus:
+      id: ${spring.application.name}:${server.port}
+      trace:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: configserver
+    password: configserver
 
 #将配置中心注册到eureka
 eureka:

@@ -17,7 +17,24 @@ spring:
         enabled: true
         service-id: '@config.server.id@'
       fail-fast: false
-
+    bus:
+      id: ${spring.application.name}:${server.port}
+      trace:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: testserver
+    password: testserver
+  zipkin:
+    base-url: '@zipkin.server.url@'
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 采样率
+      probability: 1.0
 #将网关注册到eureka
 eureka:
   instance:

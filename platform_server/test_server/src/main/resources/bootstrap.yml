@@ -26,7 +26,15 @@ spring:
     port: 5672
     username: testserver
     password: testserver
-
+  zipkin:
+    base-url: '@zipkin.server.url@'
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 采样率
+      probability: 1.0
 #将test-server注册到eureka
 eureka:
   instance:

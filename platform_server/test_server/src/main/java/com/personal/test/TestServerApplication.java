@@ -3,6 +3,8 @@
  */
 package com.personal.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +25,8 @@ public class TestServerApplication {
         SpringApplication.run(TestServerApplication.class, args);
     }
 
+    private static final Logger log = LoggerFactory.getLogger(TestServerApplication.class);
+
     @Value("${server.port}")
     String port;
     @Value("${test}")
@@ -30,6 +34,8 @@ public class TestServerApplication {
 
     @GetMapping("/index")
     public String index(){
-        return "this is test page - index - from port : " + port + " test : " + test;
+        String result = "this is test page - index - from port : " + port + " test : " + test;
+        log.info(result);
+        return result;
     }
 }

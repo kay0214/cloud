@@ -36,6 +36,7 @@
         <eureka.server.id>EUREKA-SERVER</eureka.server.id>
         <config.server.id>CONFIG-SERVER</config.server.id>
         <zuul.server.id>ZUUL-SERVER</zuul.server.id>
+        <turbine.server.id>TURBINE-SERVER</turbine.server.id>
     </properties>
 
     <!-- 依赖 -->

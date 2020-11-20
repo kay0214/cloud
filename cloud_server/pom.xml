@@ -25,5 +25,7 @@
         <module>config_server</module>
         <!-- 路由模块 -->
         <module>zuul_server</module>
+        <!-- Hystrix集群监控 -->
+        <module>turbine_server</module>
     </modules>
 </project>
